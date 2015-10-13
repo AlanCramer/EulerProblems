@@ -147,6 +147,19 @@
         
         
     };    
+    
+    // function returning function that takes an index and returns another
+    var goToNextOf = function (arrOfSpcs) {
+      
+        return function (tokenIdx) {
+            while (arrOfSpcs.indexOf(spaces[tokenIdx]) === -1) {
+                tokenIdx = (tokenIdx + 1) % spaces.length;
+            }
+
+            return tokenIdx;
+        }
+    };
+    
 
     var initCards = function(ccCards, chCards) {
       
@@ -162,9 +175,9 @@
         chCards[3] = (function(tokenIdx) { return spaces.indexOf("E3"); });
         chCards[4] = (function(tokenIdx) { return spaces.indexOf("H2"); });
         chCards[5] = (function(tokenIdx) { return spaces.indexOf("R1"); });
-        // chCards[6] = (function(tokenIdx) { 
-        // chCards[7] = 
-        // chCards[8] = 
+        chCards[6] = goToNextOf(["R1", "R2", "R3", "R4"]);
+        chCards[7] = goToNextOf(["R1", "R2", "R3", "R4"]);
+        chCards[8] = goToNextOf(["U1", "U2"]);
         chCards[9] = (function(tokenIdx) { return tokenIdx-3; });
         
     };
@@ -172,7 +185,7 @@
             
     var beginSimulation = function() {
         
-        var rollCt = 1000000;
+        var rollCt = 10000000;
         var rollNum = 0;
         var tokenIdx = 0 ; // start at "GO"
         var curDblCt = 0; // watch for 3 in a row
@@ -216,7 +229,20 @@
     
     beginSimulation();
     
-    landCts.forEach(function(lc, i) { console.log (spaces[i] + " " + lc) ;});
+    var sortedLdCts = []; 
+    
+    // copy array
+    landCts.forEach(function(lc, i) { 
+        sortedLdCts.push(lc);
+    });
+    
+    sortedLdCts.sort(function(a,b) { return b-a;});
+    var top3Line = sortedLdCts[2];
+    
+    landCts.forEach(function(lc, i) { 
+    
+        if (lc >= top3Line)
+            console.log (spaces[i] + " " + lc) ;});
     
 })();
 
