@@ -6,6 +6,12 @@
   margin: 30px;
 }   
 
+#infoArea label {
+
+    margin: 10px;
+    display: block;
+}
+
 .bar {
   fill: steelblue;
 }
