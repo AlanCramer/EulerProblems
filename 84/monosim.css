@@ -1,0 +1,28 @@
+
+.title {
+    
+  font: 30px sans-serif;
+  display: block;
+  margin: 30px;
+}   
+
+.bar {
+  fill: steelblue;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+
