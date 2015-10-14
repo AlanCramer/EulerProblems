@@ -185,7 +185,7 @@
             
     var beginSimulation = function() {
         
-        var rollCt = 10000000;
+        var rollCt = 1000000;
         var rollNum = 0;
         var tokenIdx = 0 ; // start at "GO"
         var curDblCt = 0; // watch for 3 in a row
@@ -196,8 +196,8 @@
 //            var rn = Math.floor(Math.random()*landCts.length);
 //            landCts[rn]++;
 
-            var d1 = Math.floor(Math.random()*6) + 1;
-            var d2 = Math.floor(Math.random()*6) + 1;  
+            var d1 = Math.floor(Math.random()*4) + 1;
+            var d2 = Math.floor(Math.random()*4) + 1;  
             
             // d3.select("#infoArea .throw-ct")
                 // .text("Throw Number: " + rollNum);
